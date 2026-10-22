@@ -1,0 +1,14 @@
+{
+"manifest_version":3,
+"name":"rightClickCopy",
+"version":"1.0.0",
+"description":"Right-click, select, and copy on any site.",
+"homepage_url":"https://github.com/ldk1337/RightClickCopy",
+"icons":{"48":"icon.svg","96":"icon.svg"},
+"permissions":["storage","tabs"],
+"host_permissions":["<all_urls>"],
+"background":{"scripts":["background.js"]},
+"action":{"default_icon":"icon.svg","default_title":"rightClickCopy: off"},
+"content_scripts":[{"matches":["<all_urls>"],"js":["content.js"],"run_at":"document_start","all_frames":true,"match_about_blank":true}],
+"browser_specific_settings":{"gecko":{"id":"{4f80c3ad-5bba-4387-8040-e6a25e79925a}","strict_min_version":"128.0","data_collection_permissions":{"required":["none"]}}}
+}
