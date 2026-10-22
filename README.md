@@ -1,6 +1,6 @@
 # rightClickCopy
 
-remake of absolute enable right click & copy. firefox, mv3, mit.
+ absolutely enables right click & copy on firefox.
 
 ## what
 - right click, select, copy, cut, paste back on sites that block it
