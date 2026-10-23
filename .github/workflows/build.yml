@@ -14,6 +14,15 @@ jobs:
           node-version: 22
       - run: npx -y web-ext@8 lint --self-hosted
       - run: zip -r rightclickcopy.xpi manifest.json background.js content.js icon.svg LICENSE
+      - if: startsWith(github.ref,'refs/tags/')
+        env:
+          WEB_EXT_API_KEY: ${{secrets.AMO_JWT_ISSUER}}
+          WEB_EXT_API_SECRET: ${{secrets.AMO_JWT_SECRET}}
+        run: |
+          mkdir -p src out
+          cp manifest.json background.js content.js icon.svg LICENSE src/
+          npx -y web-ext@8 sign --channel unlisted --source-dir src --artifacts-dir out
+          mv out/*.xpi rightclickcopy.xpi
       - uses: actions/upload-artifact@v4
         with:
           name: rightclickcopy
